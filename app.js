@@ -7,6 +7,9 @@ const path = require('path')
 const app = express()
 const db = require('./DB/connection.js')
 const bodyParser = require('body-parser')
+const Job = require('./models/Job')
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 const porta = 3000
 
@@ -30,6 +33,38 @@ db
 .catch((err)=> console.log("ocorreu um erro ao conectar ",err))
 
 //routes
-app.get('/', (req,res)=> res.render('index'))
+app.get('/', (req,res)=> {
+
+    let search = req.query.job
+    let query = '%' +search+ '%'
+
+
+    if(!search){
+
+    Job.findAll({order: [
+        ['createdAt','DESC']
+    ]})
+    .then(jobs => {
+        res.render('index', {
+            jobs
+        })
+    })
+    .catch(err=>console.log(err))
+}else{
+    Job.findAll({
+        where: {title: {[Op.like]:query}},
+        order: [
+        ['createdAt','DESC']
+    ]})
+    .then(jobs =>{
+        res.render('index', {
+            jobs, search
+        })
+    })
+    .catch(err=>console.log(err))
+}
+
+})
 
 app.use('/jobs', require('./routes/jobs'))
+
