@@ -1,25 +1,19 @@
-<div id="job-view-container" class="container">
-    <div class="row text-center">
-        <a href="/" class="back-link main-color">Voltar</a>
-        <div id="img-container" class="col-md-12">
-            <img src="/img/logo.png" alt="Company">
-        </div>
-        <div class="col-md-12">
-            <h1 class="main-color">{{job.dataValues.title}}</h1>
-            <p class="bold">O que eles buscam:</p>
-            <p class="Job-desc">{{job.dataValues.description}}</p>
-            <p>
-                <span class="bold">O salário informado é de:</span> R${{job.dataValues.salary}}
-            </p>
-            <p>
-                Para trabalhar na <span class="bold main-color">{{job.dataValues.company}}</span>, envie um email para <a class="main-color" href="mailto:{{job.dataValues.email}}">{{job.dataValues.email}}</a>
-            </p>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/jobs">Ver Vagas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/add">Abrir Vaga</a>
+            </li>
+        </ul>
     </div>
-</div>
-<!-- Adicionar jQuery (não é mais obrigatório para Bootstrap 5, mas pode ser útil para outras funcionalidades) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Adicionar o JavaScript do Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+</nav>
